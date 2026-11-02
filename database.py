@@ -1,9 +1,18 @@
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
+# Carga variables desde el archivo .env si existe (entorno de desarrollo)
+load_dotenv()
 
-DATABASE_URL = "mysql+pymysql://root:password123@localhost:3306/ecommerce_db"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
+if not DATABASE_URL:
+    raise RuntimeError(
+        "La variable de entorno 'DATABASE_URL' no está configurada. "
+        "Por favor, defínela en las variables de entorno del sistema o en un archivo .env."
+    )
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -16,3 +25,4 @@ def get_db():
         yield db
     finally:
         db.close()
+

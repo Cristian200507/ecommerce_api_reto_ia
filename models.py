@@ -7,7 +7,9 @@ class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(50))
-    email = Column(String(100)) # PROBLEMA: Sin restricción unique=True ni validación
+    email = Column(String(100), unique=True)
+
+    orders = relationship("Order", back_populates="user")
 
 class Product(Base):
     __tablename__ = "products"
@@ -23,4 +25,4 @@ class Order(Base):
     total_price = Column(Float)
     created_at = Column(DateTime, default=datetime.datetime.now) # PROBLEMA: Debería usar utcnow
     
-    # PROBLEMA DE ESTÁNDARES: Falta definir relaciones relacionales explícitas de SQLAlchemy
+    user = relationship("User", back_populates="orders")

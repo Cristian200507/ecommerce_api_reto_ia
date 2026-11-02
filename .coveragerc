@@ -1,0 +1,17 @@
+[run]
+source = .
+omit =
+    tests/*
+    .venv/*
+    venv/*
+    env/*
+    .env*
+
+[report]
+show_missing = True
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass

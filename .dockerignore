@@ -1,0 +1,38 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+*.venv
+
+# Archivos de caché y compilación de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Pruebas, métricas y reportes de cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.db
+*.sqlite3
+
+# Archivos de entorno y credenciales locales
+.env
+.env.local
+.env.*.local
+
+# Control de versiones y herramientas de desarrollo
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de configuración de Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
